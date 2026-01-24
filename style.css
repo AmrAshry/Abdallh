@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap&subset=arabic');
+
+
+/* css variales */
+:root{
+    --main-color: #02457a;
+    --second-color:#718096;
+
+}
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline:none; 
+    border: none;
+}
+body {
+    font-family: "Cairo", sans-serif;
+}
+a{
+    text-decoration: none;
+}
+.mode-btn{
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.profile-card{
+    position: relative;
+    height: 100vh;
+    background-image: url(image/admin.2.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.profile-card::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.35);
+
+}
+.container{
+    position: relative;
+    z-index: 100;
+    width: 800px;
+    border-radius: 10px;
+    padding: 30px;
+    
+}
+.container .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #e2e8f0;
+    opacity: 0.7;
+    border-radius: 10px;
+    z-index: -1;
+
+
+
+}
+.container .img{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 200px;
+    height: 200px;
+    z-index: 100;
+}
+.container .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+        opacity: 0;
+        transform: scale(0.8);
+        filter: brightness(0.7);
+        transition: 
+        opacity 1.2s ease,
+        transform 1.2s ease,
+        filter 1.2s ease,
+        box-shadow 1.2s ease;
+        opacity: 1;
+        transform: scale(1);
+        filter: brightness(1.2);
+        box-shadow: 
+          0 0 15px rgba(255, 255, 255, 0.6),
+          0 0 30px rgba(255, 255, 255, 0.4),
+          0 0 60px rgba(255, 255, 255, 0.2);
+      }
+      
+      .img img.show {
+        opacity: 1;
+        transform: scale(1);
+        filter: brightness(1.2);
+        box-shadow: 
+          0 0 15px rgba(255, 255, 255, 0.6),
+          0 0 30px rgba(255, 255, 255, 0.4),
+          0 0 60px rgba(255, 255, 255, 0.2);
+      }
+      
+}
+
+img {
+    width: 150px;
+}
+.container .info{
+    padding: relative;
+    z-index: 100px;
+}
+.container .info h1{
+    font-size: 40px;
+    width: 50%;
+    border-bottom: 1px solid var(--main-color);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+
+}
+.container .info p{
+    font-size: 15px;
+     margin-bottom: 10px;
+     display: flex;
+     align-items: center;
+}
+.container .info p span{
+    color: var(--main-color);
+    flex: 1;
+}
+.container .info p i {
+    color: var(--main-color);
+    padding-right: 15px;
+
+}
+.container .info p:first-of-type span{
+    
+    font-weight:bold;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    
+
+}
+.container .info p:last-of-type {
+    letter-spacing: 1.5px;
+}
+.container .links{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    position: relative;
+    z-index: 100;
+}
+.container .links a{
+    width: 40px;
+    height: 40px;
+    color: var(--second-color);
+    transition: all 0.3s ease;
+
+}
+.container .links a:hover {
+    color: var(--main-color);
+}
+.container .links a i{
+    line-height: 40px;
+    font-size: 40px;
+}
+@media(max-width: 767px){
+
+    .profile-card,
+    .profile-card::after{
+        height: 120vh;
+
+    }
+    .container{
+        margin: 0 15px;
+    }
+    .container .img{
+        position: relative;
+        margin: 0 auto;
+        width: 250px;
+        height: 250px;
+        right: auto;
+        margin-bottom: 15px;
+    
+    }
+    .container .img img{
+        border-radius: 50%;
+    }
+    .container .info h1 {
+        font-size: 25px;
+    }
+} 
+
+.active {
+    color: #fff;
+}
+.amr {
+
+    font-size: 12px;
+    height: 10px; 
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: 15px;
+
+
+}
