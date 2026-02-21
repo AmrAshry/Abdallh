@@ -1,26 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap&subset=arabic');
 
-
-/* css variales */
-:root{
+/* 1. CSS Variables */
+:root {
     --main-color: #02457a;
-    --second-color:#718096;
-
+    --second-color: #718096;
+    --transition-speed: 0.3s;
 }
-*{
+
+/* 2. Reset Styles */
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    outline:none; 
+    outline: none;
     border: none;
 }
+
 body {
     font-family: "Cairo", sans-serif;
+    overflow-x: hidden;
 }
-a{
+
+a {
     text-decoration: none;
 }
-.mode-btn{
+
+/* 3. Dark Mode Logic */
+/* التعديل هنا لضمان شمول كل النصوص والأيقونات */
+.container.dark-mode h1,
+.container.dark-mode p,
+.container.dark-mode span,
+.container.dark-mode .info,
+.container.dark-mode .description,
+.container.dark-mode .amr {
+    color: #ffffff !important;
+}
+
+.container.dark-mode i {
+    color: #ffffff !important; /* تغيير لون الأيقونات للأبيض في الدارك مود */
+}
+
+.container.dark-mode h1 {
+    border-bottom-color: #ffffff; /* تغيير لون الخط تحت الاسم */
+}
+
+.container.dark-mode .links a {
+    color: #cbd5e0; /* لون الروابط في الوضع المظلم */
+}
+
+/* 4. Layout & Profile Card */
+.mode-btn {
     position: absolute;
     top: 20px;
     right: 25px;
@@ -29,49 +58,52 @@ a{
     z-index: 1000;
 }
 
-.profile-card{
+.profile-card {
     position: relative;
     height: 100vh;
-    background-image: url(image/admin.2.jpg);
+    background-image: url('image/admin.2.jpg');
     background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
-.profile-card::after{
+
+.profile-card::after {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.35);
-
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.35);
 }
-.container{
+
+.container {
     position: relative;
     z-index: 100;
     width: 800px;
+    max-width: 90%;
     border-radius: 10px;
     padding: 30px;
-    
+    transition: var(--transition-speed);
 }
-.container .overlay{
+
+.container .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: #e2e8f0;
-    opacity: 0.7;
+    opacity: 0.8; /* زيادة الشفافية قليلاً لتحسين القراءة */
     border-radius: 10px;
     z-index: -1;
-
-
-
+    transition: background-color var(--transition-speed);
 }
-.container .img{
+
+/* 5. Images & Animations */
+.container .img {
     position: absolute;
     top: 15px;
     right: 15px;
@@ -79,143 +111,106 @@ a{
     height: 200px;
     z-index: 100;
 }
+
 .container .img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-    margin: 0 auto;
     border-radius: 10px;
-        opacity: 0;
-        transform: scale(0.8);
-        filter: brightness(0.7);
-        transition: 
-        opacity 1.2s ease,
-        transform 1.2s ease,
-        filter 1.2s ease,
-        box-shadow 1.2s ease;
-        opacity: 1;
-        transform: scale(1);
-        filter: brightness(1.2);
-        box-shadow: 
-          0 0 15px rgba(255, 255, 255, 0.6),
-          0 0 30px rgba(255, 255, 255, 0.4),
-          0 0 60px rgba(255, 255, 255, 0.2);
-      }
-      
-      .img img.show {
-        opacity: 1;
-        transform: scale(1);
-        filter: brightness(1.2);
-        box-shadow: 
-          0 0 15px rgba(255, 255, 255, 0.6),
-          0 0 30px rgba(255, 255, 255, 0.4),
-          0 0 60px rgba(255, 255, 255, 0.2);
-      }
-      
+    transition: all 0.5s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-img {
-    width: 150px;
+.container .img img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
-.container .info{
-    padding: relative;
-    z-index: 100px;
+
+/* 6. Info & Text */
+.container .info {
+    position: relative;
+    z-index: 101;
 }
-.container .info h1{
-    font-size: 40px;
-    width: 50%;
-    border-bottom: 1px solid var(--main-color);
+
+.container .info h1 {
+    font-size: 35px;
+    width: 60%;
+    border-bottom: 2px solid var(--main-color);
     margin-bottom: 15px;
     padding-bottom: 10px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, serif;
+    transition: all var(--transition-speed);
+}
 
+.container .info p {
+    font-size: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    transition: color var(--transition-speed);
+}
 
-}
-.container .info p{
-    font-size: 15px;
-     margin-bottom: 10px;
-     display: flex;
-     align-items: center;
-}
-.container .info p span{
-    color: var(--main-color);
-    flex: 1;
-}
 .container .info p i {
     color: var(--main-color);
     padding-right: 15px;
+    width: 30px;
+}
 
-}
-.container .info p:first-of-type span{
-    
-    font-weight:bold;
-    letter-spacing: 2px;
-    text-transform: capitalize;
-    
-
-}
-.container .info p:last-of-type {
-    letter-spacing: 1.5px;
-}
-.container .links{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 30px;
-    position: relative;
-    z-index: 100;
-}
-.container .links a{
-    width: 40px;
-    height: 40px;
-    color: var(--second-color);
-    transition: all 0.3s ease;
-
-}
-.container .links a:hover {
+.container .info p span {
     color: var(--main-color);
 }
-.container .links a i{
-    line-height: 40px;
-    font-size: 40px;
+
+/* تنسيق خاص للوصف الوظيفي */
+.description {
+    line-height: 1.6;
+    margin-top: 15px;
+    color: #4a5568;
 }
-@media(max-width: 767px){
 
-    .profile-card,
-    .profile-card::after{
-        height: 120vh;
+/* 7. Links */
+.container .links {
+    display: flex;
+    gap: 20px;
+    margin-top: 25px;
+}
 
+.container .links a {
+    color: var(--second-color);
+    font-size: 28px;
+    transition: var(--transition-speed);
+}
+
+.container .links a:hover {
+    color: var(--main-color);
+    transform: translateY(-3px);
+}
+
+/* 8. Responsive Design */
+@media (max-width: 767px) {
+    .profile-card {
+        height: auto;
+        padding: 50px 0;
     }
-    .container{
-        margin: 0 15px;
-    }
-    .container .img{
+    .container .img {
         position: relative;
-        margin: 0 auto;
-        width: 250px;
-        height: 250px;
+        margin: 0 auto 20px;
         right: auto;
-        margin-bottom: 15px;
-    
-    }
-    .container .img img{
-        border-radius: 50%;
+        top: auto;
     }
     .container .info h1 {
-        font-size: 25px;
+        width: 100%;
+        font-size: 26px;
+        text-align: center;
     }
-} 
-
-.active {
-    color: #fff;
+    .container .info p {
+        font-size: 14px;
+    }
 }
+
+/* 9. Footer Text */
 .amr {
-
-    font-size: 12px;
-    height: 10px; 
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    margin-top: 15px;
-
-
+    font-size: 11px;
+    margin-top: 30px;
+    opacity: 0.7;
+    text-align: left;
 }
